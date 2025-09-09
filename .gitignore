@@ -1,0 +1,49 @@
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build do Maven (Spring Boot)
+target/
+
+# Build do Angular
+dist/
+dist-out-tsc/
+
+# Dependências do Node
+node_modules/
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Arquivos temporários
+*.tmp
+*.old
+*.bak
+*~
+
+# Arquivos compactados
+*.zip
+*.tar.gz
+*.rar
