@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row flex-nowrap">
     
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light min-vh-100" style="width: 280px;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light min-vh-100" style="width: 280px; height: 100%;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <img class="bi me-2" width="40" height="32" src="favicon.ico"/>
         <span class="fs-4">Ecommerce</span>
@@ -14,11 +14,18 @@
             Home
           </a>
         </li>
-        <li>
-          <a href="#" class="nav-link link-dark">
+        <li class="nav-item">
+          <a href="#submenu-dashboard" data-bs-toggle="collapse" class="nav-link link-dark dropdown-toggle">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-            Dashboard
+            Items
           </a>
+          <div class="collapse" id="submenu-dashboard">
+            <ul class="nav flex-column ms-4">
+              <li *@nhFor="let category of categories">
+                <a href="#" class="nav-link link-dark">{{category.name}}</a>
+              </li>
+            </ul>
+          </div>
         </li>
         <li>
           <a href="#" class="nav-link link-dark">
@@ -35,7 +42,7 @@
         <li>
           <a href="#" class="nav-link link-dark">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-            Customers
+            About
           </a>
         </li>
       </ul>
@@ -64,16 +71,33 @@
             <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
           </div>
           <div>
-            <p class="mb-0">Cart</p>
+            <p class="mb-0"> Shopping Cart</p> 
           </div>
         </nav>
       </header>
 
-      <main class="p-4 flex-grow-1 overflow-auto">
-        <h3>Products</h3>
+      <main class="p-4 flex-grow-1 overflow-auto"> <!--CONTENT AREA-->
         <app-product-list></app-product-list>
       </main>
 
+
+      <footer class="mt-auto p-3 bg-light border-top">
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+          <ul class="pagination mb-0">
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+    </footer>
     </div>
   </div>
 </div>
