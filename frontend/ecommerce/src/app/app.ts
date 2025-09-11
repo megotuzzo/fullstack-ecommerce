@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 
 import { ProductList } from "./components/product-list/product-list";
 import { ProductService } from './services/product';
@@ -12,7 +12,7 @@ import { ProductCategoryService } from './services/product-category';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductList, CommonModule],
+  imports: [RouterOutlet, CommonModule, RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   providers: [ProductService, ProductCategoryService],
@@ -33,10 +33,13 @@ export class App implements OnInit {
   listCategories() {
     this.productCategoryService.getCategories().subscribe(
       data => {
-        console.log('Categorias recebidas da API:', data);
+        // ADICIONE ESTE LOG PARA VER OS DADOS CRUS
+        console.log("--- [DEBUG ARRAY DE CATEGORIAS] ---");
+        console.log("Dados recebidos para o menu de categorias:", data);
+
         this.categories = data;
       }
-    )
+    );
   }
 
 }
