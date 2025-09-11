@@ -21,8 +21,8 @@
           </a>
           <div class="collapse" id="submenu-dashboard">
             <ul class="nav flex-column ms-4">
-              <li *@nhFor="let category of categories">
-                <a href="#" class="nav-link link-dark">{{category.name}}</a>
+              <li *ngFor="let category of categories" class="nav-item">
+                <a href="#" class="nav-link link-dark">{{category.categoryName}}</a>
               </li>
             </ul>
           </div>

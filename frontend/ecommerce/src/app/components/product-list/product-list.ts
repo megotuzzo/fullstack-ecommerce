@@ -23,6 +23,7 @@ export class ProductList implements OnInit{
   listProducts() {
     this.productService.getProductList().subscribe(
       data => {
+        console.log('recebendo os dados: ', data);
         this.products = data;
       }
     )
