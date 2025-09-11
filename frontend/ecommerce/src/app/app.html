@@ -1,99 +1,18 @@
 <div class="container-fluid">
   <div class="row flex-nowrap">
-    
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light min-vh-100" style="width: 280px; height: 100%;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <img class="bi me-2" width="40" height="32" src="favicon.ico"/>
-        <span class="fs-4">Ecommerce</span>
-      </a>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <a href="/products" class="nav-link active" aria-current="page">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-              Products
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="#submenu-dashboard" data-bs-toggle="collapse" class="nav-link link-dark dropdown-toggle">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-              Categories
-          </a>
-          <div class="collapse" id="submenu-dashboard">
-            <ul class="nav flex-column ms-4">
-              <li *ngFor="let category of categories" class="nav-item">
-                <a [routerLink]="['/category', category.id]" routerLinkActive="active-link"
-                  class="nav-link link-dark">{{category.categoryName}}</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a href="#" class="nav-link link-dark">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-              Orders
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/about']" class="nav-link link-dark">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-              About
-          </a>
-        </li>
-      </ul>
-      <hr>
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-          <strong>mdo</strong>
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-      </div>
-    </div>
+
+    <app-sidebar style="max-width: min-content;"></app-sidebar>
 
     <div class="col p-0 d-flex flex-column">
+      
+      <app-header></app-header>
 
-      <header class="header p-3 bg-light shadow-sm">
-        <nav class="d-flex justify-content-between align-items-center">
-          <div class="input-group" style="max-width: 600px;">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-          </div>
-          <div>
-            <p class="mb-0"> Shopping Cart</p> 
-          </div>
-        </nav>
-      </header>
-
-      <main class="p-4 flex-grow-1 overflow-auto"> <!--CONTENT AREA-->
+      <main class="p-4 flex-grow-1 overflow-auto">
         <router-outlet></router-outlet>
-        <!--<app-product-list></app-product-list>-->
       </main>
 
-
-      <footer class="mt-auto p-3 bg-light border-top">
-        <nav aria-label="Page navigation" class="d-flex justify-content-center">
-          <ul class="pagination mb-0">
-            <li class="page-item disabled">
-              <a class="page-link">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-    </footer>
+      <app-footer></app-footer>
+      
     </div>
   </div>
 </div>

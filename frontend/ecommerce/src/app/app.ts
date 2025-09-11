@@ -1,45 +1,21 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
-
-import { ProductList } from "./components/product-list/product-list";
-import { ProductService } from './services/product';
 
 import { CommonModule } from '@angular/common';
 
-import { ProductCategory } from './common/product-category';
-import { ProductCategoryService } from './services/product-category';
+import { Sidebar } from "./shared/sidebar/sidebar";
+import { Header } from "./shared/header/header";
+import { Footer } from "./shared/footer/footer";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, RouterModule],
+  imports: [RouterOutlet, CommonModule, RouterModule, Sidebar, Header, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
-  providers: [ProductService, ProductCategoryService],
+  styleUrl: './app.scss'
 })
-export class App implements OnInit {
+export class App {
   protected readonly title = signal('ecommerce');
 
-  categories: ProductCategory[] = [];
-
-  constructor(private productCategoryService: ProductCategoryService) {
-
-  }
-
-  ngOnInit(): void {
-    this.listCategories();
-  }
-
-  listCategories() {
-    this.productCategoryService.getCategories().subscribe(
-      data => {
-        // ADICIONE ESTE LOG PARA VER OS DADOS CRUS
-        console.log("--- [DEBUG ARRAY DE CATEGORIAS] ---");
-        console.log("Dados recebidos para o menu de categorias:", data);
-
-        this.categories = data;
-      }
-    );
-  }
 
 }
