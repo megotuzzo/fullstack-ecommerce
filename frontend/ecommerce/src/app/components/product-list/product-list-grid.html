@@ -4,15 +4,16 @@
             <div class="row">
                 <!--Loop over products-->
                 <div *ngFor="let tempProduct of products" class="col-md-3">
-
-                    <div class="product-box">
+                    <div class="card" style="width: 16rem; ">
                         <img src="{{tempProduct.imageUrl}}" class="img-responsive">
-                        <h3>{{tempProduct.name}}</h3>
-                        <div class="price">{{tempProduct.unitPrice | currency: 'USD'}}</div>
-                        <a href="#" class="primary-btn">Add to cart</a>
+                        <div class="card-body">
+                            <h6 class="card-title">{{tempProduct.name}}</h6>
+                            <p class="card-text price">{{tempProduct.unitPrice | currency: 'USD'}}</p>
+                            <a href="#" class="btn btn-primary">Add to cart</a>
+                        </div>
                     </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
 </div>
