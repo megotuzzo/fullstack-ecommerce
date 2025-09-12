@@ -1,19 +1,20 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
-            <div class="row">
-                <!--Loop over products-->
+            <div class="row"> <!--Loop over products-->
                 <div *ngFor="let tempProduct of products" class="col-md-3">
-                    <div class="card" style="width: 16rem; ">
-                        <img src="{{tempProduct.imageUrl}}" class="img-responsive">
+                    <div class="card" style="width: 16rem; "> <img src="{{tempProduct.imageUrl}}" class="img-responsive">
                         <div class="card-body">
                             <h6 class="card-title">{{tempProduct.name}}</h6>
-                            <p class="card-text price">{{tempProduct.unitPrice | currency: 'USD'}}</p>
-                            <a href="#" class="btn btn-primary">Add to cart</a>
+                            <p class="card-text price">{{tempProduct.unitPrice | currency: 'USD'}}</p> <a href="#" class="btn btn-primary">Add to
+                                cart</a>
                         </div>
                     </div>
                 </div>
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No products found.
                 </div>
-                </div>
-                </div>
+            </div>
+            </div>
+            </div>
 </div>
