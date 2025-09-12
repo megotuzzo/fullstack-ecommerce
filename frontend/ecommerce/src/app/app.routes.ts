@@ -4,10 +4,12 @@ import { About } from './components/about/about';
 
 export const routes: Routes = [
 
+    { path: 'search/:keyword', component: ProductList },
     { path: 'category/:id', component: ProductList },
     { path: 'category', component: ProductList },
     { path: 'products', component: ProductList },
     { path: 'about', component: About },
+
 
     //priority list. this two must be the last ones
     { path: '', redirectTo: '/products', pathMatch: 'full' },

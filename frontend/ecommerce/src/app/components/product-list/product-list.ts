@@ -15,33 +15,43 @@ export class ProductList implements OnInit{
 
   products: Product[] = [];
   currentCategoryId: number = 1;
+  searchMode: boolean = false;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    // A única responsabilidade do ngOnInit é se inscrever para ouvir TODAS as mudanças de rota.
     this.route.paramMap.subscribe(params => {
 
-      if (params.has('id')) {
-        // Pega o 'id' do 'params' que veio da rota ATUAL.
-        // O '!' diz ao TypeScript que sabemos que o valor não será nulo aqui.
-        // O '+' converte a string do ID para um número.
-        this.currentCategoryId = +params.get('id')!;
+      // A lógica de decisão agora está DENTRO do subscribe, usando o 'params' sempre atualizado.
+      if (params.has('keyword')) {
+        // Modo de busca
+        const keyword = params.get('keyword')!;
+        this.productService.searchProducts(keyword).subscribe(data => {
+          this.products = data;
+        });
+      }
+      else {
+      //SHOW BY CATEGORY (has id on route)
+        if (params.has('id')) {
+          this.currentCategoryId = +params.get('id')!;
 
-        // Busca os produtos para a categoria específica
-        this.productService.getProductListByCategory(this.currentCategoryId).subscribe(
-          data => {
+          this.productService.getProductListByCategory(this.currentCategoryId).subscribe(data => {
             this.products = data;
-          }
-        );
-      } else {
-        // Se não houver 'id' na rota, busca todos os produtos 
-        this.productService.getProductList().subscribe(
-          data => {
-            this.products = data;
-          }
-        );
+          });
+        }
+        //SHOW ALL (doesn't have id on the route)
+        else {
+          this.productService.getProductList().subscribe(
+            data => {
+              this.products = data;
+            }
+          );
+        }
+
       }
     });
   }
+
 }

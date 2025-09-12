@@ -26,8 +26,6 @@ export class Sidebar implements OnInit{
   listCategories() {
     this.productCategoryService.getCategories().subscribe(
       data => {
-        // ADICIONE ESTE LOG PARA VER OS DADOS CRUS
-        console.log("--- [DEBUG ARRAY DE CATEGORIAS] ---");
         console.log("Dados recebidos para o menu de categorias:", data);
 
         this.categories = data;
